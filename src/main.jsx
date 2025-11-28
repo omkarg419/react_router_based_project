@@ -6,6 +6,8 @@ import App from "./App.jsx";
 import Home from "./components/home/Home.jsx";
 import About from "./components/about/About.jsx";
 import User from "./components/user/User.jsx";
+import Contact from "./components/contact/Contact.jsx";
+import Github, { githubLoader } from "./components/github/Github.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -15,13 +17,17 @@ import {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-  <Route path="/" element={<Layout />}>
-    <Route path="" element={<Home />} />
-    <Route path="about" element={<About />} />
-    <Route path="user" element={<User />} >
-    
+    <Route path="/" element={<Layout />}>
+      <Route path="" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="user/" element={<User />}>
+        <Route path=":userid" element={<User />} />
+      </Route>
+      <Route path="contact" element={<Contact />} />
+      <Route loader={githubLoader} path="github" element={<Github />} />
+      <Route path="*" element={<div>404 Not Found</div>} />
     </Route>
-  </Route>)
+  )
 );
 
 createRoot(document.getElementById("root")).render(
