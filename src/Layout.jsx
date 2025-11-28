@@ -4,7 +4,11 @@ import Footer from "./components/footer/Footer.jsx";
 import { Outlet } from "react-router-dom";
 
 function Layout() {
-  return <div></div>;
+    return (<div>
+        <Header />
+        <Outlet />
+        <Footer />
+    </div>);
 }
 
 export default Layout;
